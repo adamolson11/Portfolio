@@ -1,20 +1,23 @@
 
-import "./app.scss"
-import Navbar from "./components/navbar/Navbar";
+
+import Test from "./components/Test";
+import "./app.scss";
+// import Navbar from "./components/navbar/Navbar"; // Commented out Navbar import
+
 const App = () => {
-
-  // const [count, setCount] = useState(0)
-
-  return <div> 
-    <section> <Navbar/>
-
-    </section>
-    <section>Parallax</section>
-    <section>Services</section>
-    <section>Portfolio1</section>
-    <section>Portfolio2</section>
-    <section>Portfolio3</section>
-    </div>
+  return (<div>
+      {/* <section>
+        <Navbar />
+      </section>
+      <section>Parallax</section>
+      <section>Services</section>
+      <section>Portfolio1</section>
+      <section>Portfolio2</section>
+      <section>Portfolio3</section> */}
+      <Test/>
+     
+    </div>)
+  
 };
 
-export default App
+export default App;
