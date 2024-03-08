@@ -1,23 +1,22 @@
 /* eslint-disable no-unused-vars */
 const Links = () => {
-
    const items = [
-"Homepage",
-"Homepage",
-"Homepage",
-"Homepage",
-"Homepage",
-"Homepage",
-"Homepage",
-   ]
+     "Homepage",
+     "Services",
+     "Portfolio",
+     "Contact",
+     "About"
+   ];
    
-   
-    return (
-        <div className="links"> Links</div>    
-        
-        )
-
-
+   return (
+     <div className="links">
+       {items.map((item, index) => (
+         <a key={index} href={`#${item}`}>
+            {item}
+         </a>
+       ))}
+     </div>
+   );
 }
 
-export default Links
+export default Links;
