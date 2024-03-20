@@ -1,6 +1,9 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
+import React, { useRef } from 'react';
+
 import "./services.scss";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 
 const variants= {
@@ -22,13 +25,20 @@ const variants= {
     }
 }
 const Services = () => {
+
+    const ref = useRef()
+    const isInView= useInView(ref,{margin:"-100px"})
+    
+    
     return (
         <motion.div 
         className="services" 
         variants= {variants}
          initial = "initial"
-        //   animate= "animate"
-        whileInView= "animate"
+        // //   animate= "animate"
+        // whileInView= "animate"
+        ref={ref}
+        animate={isInView && "animate"}
           
           >
             
@@ -41,12 +51,12 @@ const Services = () => {
                 <div className="title">
                     <img src="/people.png" alt="image of people working in an office" />
                     <h1>
-                    <b>New Ideas</b>
+                    <motion.b whileHover={{color: "orange"}}>New Ideas</motion.b>
                     </h1>
                     </div>
                     <div className="title">
                         <h1>
-                        <b> For Your </b> 
+                        <motion.b whileHover={{color: "orange"}}> For Your </motion.b> 
                         Business.
                         </h1>
                         <button> WHAT I DO. </button>     
