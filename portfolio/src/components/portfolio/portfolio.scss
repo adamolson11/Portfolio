@@ -11,11 +11,10 @@ position: relative;
     color: orange;
     font-size: 36px;     
 
-    .progressBar{
+    .progressBar {
         height: 10px;
-        color: white; 
-
-
+        background-color: orange; /* Add this line */
+        width: 100%; /* Add this line */
 
 }
 }
