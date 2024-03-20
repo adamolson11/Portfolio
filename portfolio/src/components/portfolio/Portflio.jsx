@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 import { useRef } from "react";
 import "./portfolio.scss";
@@ -31,10 +32,28 @@ const items = [
 ];
 
 const Single = ({ item }) => {
-  return (
-    <motion.section>
-      {item.title}
-    </motion.section>
+
+    const ref = useRef();
+
+    const { scrollYProgress } = useScroll({
+        target: ref,
+       
+      });
+    // eslint-disable-next-line no-unused-vars
+    const y = useTransform(scrollYProgress, [0,1] [-300,300])
+
+    return (<section ref={ref}> 
+    <div className="container">
+        <img src = {item.img} alt= "" />
+        <div className="textContainer">
+            <h2> style = {{y}} {item.title} </h2>
+            <p>{item.desc}</p>
+            <button> See Demo</button>
+            
+            </div>
+            </div>
+            </section>
+
   );
 };
 
