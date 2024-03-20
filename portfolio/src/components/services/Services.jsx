@@ -10,6 +10,7 @@ const variants= {
         opacity:0 
 
     },
+    
     animate: {
         x:0, 
         opacity: 1, 
@@ -26,8 +27,11 @@ const Services = () => {
         className="services" 
         variants= {variants}
          initial = "initial"
-          animate= "animate">
-            Services
+        //   animate= "animate"
+        whileInView= "animate"
+          
+          >
+            
             <motion.div className="textContainer"  variants= {variants}>
                 <p>Together.<br/> we move forward.</p>
                 <hr/>
@@ -37,11 +41,15 @@ const Services = () => {
                 <div className="title">
                     <img src="/people.png" alt="image of people working in an office" />
                     <h1>
-                        New Ideas 
+                    <b>New Ideas</b>
+                    </h1>
+                    </div>
+                    <div className="title">
+                        <h1>
                         <b> For Your </b> 
                         Business.
-                    </h1>
-                    <button> WHAT I DO. </button>
+                        </h1>
+                        <button> WHAT I DO. </button>     
                 </div>
             </motion.div>
 
