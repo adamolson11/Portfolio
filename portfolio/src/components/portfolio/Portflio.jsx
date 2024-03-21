@@ -2,31 +2,31 @@
 /* eslint-disable react/prop-types */
 import { useRef } from "react";
 import "./portfolio.scss";
-import { motion, useScroll, useSpring } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
 const items = [
   {
     id: 1,
     title: "Level up Games",
-    img: "https://images.pexels.com/photos/343457/pexels-photo-343457.jpeg?cs=srgb&dl=pexels-miguel-%C3%A1-padri%C3%B1%C3%A1n-343457.jpg&fm=jpg&_gl=1*15yq31n*_ga*MTY2NDQ1OTUwMy4xNzEwOTQ4NTQx*_ga_8JE65Q40S6*MTcxMDk0ODU0MS4xLjEuMTcxMDk0ODU5OS4wLjAuMA..",
+    img: "https://images.pexels.com/photos/371924/pexels-photo-371924.jpeg?auto=compress&cs=tinysrgb&w=600",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic repellendus aliquid eveniet accusantium quidem eum quia, animi tenetur voluptatibus fugit nostrum voluptate minima amet. Ea doloribus voluptas voluptates deserunt magnam!",
   },
   {
     id: 2,
     title: "JNelson Books",
-    img: "https://images.pexels.com/photos/322335/pexels-photo-322335.jpeg",
+    img: "https://images.pexels.com/photos/694740/pexels-photo-694740.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic repellendus aliquid eveniet accusantium quidem eum quia, animi tenetur voluptatibus fugit nostrum voluptate minima amet. Ea doloribus voluptas voluptates deserunt magnam!",
   },
   {
     id: 3,
     title: "Video Game education website for Kids",
-    img: "https://images.pexels.com/photos/343457/pexels-photo-343457.jpeg?cs=srgb&dl=pexels-miguel-%C3%A1-padri%C3%B1%C3%A1n-343457.jpg&fm=jpg&_gl=1*15yq31n*_ga*MTY2NDQ1OTUwMy4xNzEwOTQ4NTQx*_ga_8JE65Q40S6*MTcxMDk0ODU0MS4xLjEuMTcxMDk0ODU5OS4wLjAuMA..",
+    img: "https://images.pexels.com/photos/4835429/pexels-photo-4835429.jpeg?auto=compress&cs=tinysrgb&w=600",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic repellendus aliquid eveniet accusantium quidem eum quia, animi tenetur voluptatibus fugit nostrum voluptate minima amet. Ea doloribus voluptas voluptates deserunt magnam!",
   },
   {
     id: 4,
     title: "Catalyst Blog",
-    img: "https://images.pexels.com/photos/343457/pexels-photo-343457.jpeg?cs=srgb&dl=pexels-miguel-%C3%A1-padri%C3%B1%C3%A1n-343457.jpg&fm=jpg&_gl=1*15yq31n*_ga*MTY2NDQ1OTUwMy4xNzEwOTQ4NTQx*_ga_8JE65Q40S6*MTcxMDk0ODU0MS4xLjEuMTcxMDk0ODU5OS4wLjAuMA..",
+    img: "https://images.pexels.com/photos/17483868/pexels-photo-17483868/free-photo-of-an-artist-s-illustration-of-artificial-intelligence-ai-this-image-represents-how-machine-learning-is-inspired-by-neuroscience-and-the-human-brain-it-was-created-by-novoto-studio-as-par.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic repellendus aliquid eveniet accusantium quidem eum quia, animi tenetur voluptatibus fugit nostrum voluptate minima amet. Ea doloribus voluptas voluptates deserunt magnam!",
   },
 ];
@@ -40,16 +40,21 @@ const Single = ({ item }) => {
        
       });
     // eslint-disable-next-line no-unused-vars
-    const y = useTransform(scrollYProgress, [0,1] [-300,300])
+    const y = useTransform(scrollYProgress, [0,1], [-300,300])
 
-    return (<section ref={ref}> 
+    return (
+    <section ref={ref}> 
     <div className="container">
+    <div className="wrapper">
+        <div className="imageContainer">
         <img src = {item.img} alt= "" />
-        <div className="textContainer">
-            <h2> style = {{y}} {item.title} </h2>
+        </div>
+        <motion.div className="textContainer" >
+            <h2 > {item.title} </h2>
             <p>{item.desc}</p>
             <button> See Demo</button>
             
+        </motion.div>
             </div>
             </div>
             </section>
