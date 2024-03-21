@@ -8,6 +8,7 @@ import Sidebar from "./components/sidebar/Sidebar"; // Correct import path and u
 import Parallax from "./components/parallax/Parallax"; 
 import Services from "./components/services/Services"; 
 import Portfolio from "./components/portfolio/Portflio";
+import Contact from "./components/contact/Contact";
 
 const App = () => {
   return <div>
@@ -20,7 +21,10 @@ const App = () => {
       <section id ="Portfolio"><Parallax type="portfolio"/>
       </section>
     <Portfolio/>
-      <section id = " Contact"> Contact</section>
+    
+      <section id = " Contact"> <Contact type="contact"/>
+      </section>
+      <Contact/>
       <Sidebar /> 
     
      
