@@ -30,23 +30,19 @@ const Contact = () => {
     const ref = useRef(); 
     const formRef = useRef(); 
     const [error, setError] = useState(false); 
-    const [success, setSuccess] = useState(false)
+    const [success, setSuccess] = useState(false); 
+    
     const isInView = useInView(formRef, { margin: "-100px" });
 
     
     const sendEmail = (e) => {
         e.preventDefault();
-        emailjs
-            .sendForm('service_34076sr', 'template_a82oh7n', formRef.current, {
-                publicKey: '0-CflnbuaQH85nHYJ',
-            })
+        emailjs.sendForm('service_34076sr', 'template_ki4ik6p', formRef.current, '0-CflnbuaQH85nHYJ')
             .then((result) => {
-                setSuccess(true); // Set success to true upon successful email submission
-                setError(false); // Reset error state
-            })
-            .catch((error) => {
-                setError(true); // Set error to true upon failure
-                setSuccess(false); // Reset success state
+               setSuccess(true)
+            },
+            (error) => {
+                setError(true);
             });
     };
     
@@ -70,9 +66,9 @@ const Contact = () => {
             </motion.div>
         </motion.div>
         
-        <div className="formContainer">
+        <motion.div className="formContainer">
            
-            <form
+            <motion.form
             ref= {formRef}
             onSubmit= {sendEmail}
             initial={{opacity: 0 }}
@@ -84,10 +80,11 @@ const Contact = () => {
                 <input type = "email" required placeholder = "email" name= "email"/>
                 <textarea rows={8} placeholder= "Message Me" name= "message"/>
                 <button>Submit</button>
-                {error  && "Error"}
+                {error && "Error"}
                 {success && "Success"}
-            </form>
-        </div>
+                
+            </motion.form>
+        </motion.div>
         </motion.div>
     )
 }
