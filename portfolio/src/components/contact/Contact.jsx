@@ -1,7 +1,13 @@
+/* eslint-disable react/no-unknown-property */
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 
 import "./contact.scss";
-import {motion} from "framer-motion"; 
+import {motion, useInView} from "framer-motion"; 
+import emailjs from '@emailjs/browser';
+import React, { useRef, useState } from 'react';
+
+
 
 const variants = {
     initial: {
@@ -20,6 +26,30 @@ const variants = {
 
 
 const Contact = () => {
+ 
+    const ref = useRef(); 
+    const formRef = useRef(); 
+    const [error, setError] = useState(false); 
+    const [success, setSuccess] = useState(false)
+    const isInView = useInView(formRef, { margin: "-100px" });
+
+    
+    const sendEmail = (e) => {
+        e.preventDefault();
+        emailjs
+            .sendForm('service_34076sr', 'template_a82oh7n', formRef.current, {
+                publicKey: '0-CflnbuaQH85nHYJ',
+            })
+            .then((result) => {
+                setSuccess(true); // Set success to true upon successful email submission
+                setError(false); // Reset error state
+            })
+            .catch((error) => {
+                setError(true); // Set error to true upon failure
+                setSuccess(false); // Reset success state
+            });
+    };
+    
 
     return(
 
@@ -42,11 +72,20 @@ const Contact = () => {
         
         <div className="formContainer">
            
-            <form>
-                <input type = "text" required placeholder = "Name"/>
-                <input type = "email" required placeholder = "email"/>
-                <textarea rows={8} placeholder= "Message Me"/>
+            <form
+            ref= {formRef}
+            onSubmit= {sendEmail}
+            initial={{opacity: 0 }}
+            whileInView={{opacity: 1}}
+            transition= {{delay:4, duration: 1 }}
+            
+            >
+                <input type = "text" required placeholder = "Name" name="name"/>
+                <input type = "email" required placeholder = "email" name= "email"/>
+                <textarea rows={8} placeholder= "Message Me" name= "message"/>
                 <button>Submit</button>
+                {error  && "Error"}
+                {success && "Success"}
             </form>
         </div>
         </motion.div>
